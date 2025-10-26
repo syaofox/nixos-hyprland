@@ -12,7 +12,7 @@
   networking.hostName = "vm";
   networking.networkmanager.enable = true;
 
-  time.timeZone = "America/Los_Angeles";
+  time.timeZone = "Asia/Shanghai";
 
   services.getty.autologinUser = "syaofox";
 
