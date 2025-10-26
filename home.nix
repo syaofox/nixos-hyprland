@@ -17,14 +17,21 @@ in
     ./modules/theme.nix
   ];
 
-  home.username = "tony";
-  home.homeDirectory = "/home/tony";
+  home.username = "syaofox";
+  home.homeDirectory = "/home/syaofox";
   home.stateVersion = "25.05";
+  
+  programs.git = {
+    enable = true;
+    userName = "syaofox";
+    userEmail = "syaofox@gmail.com";
+  };
+  
   programs.bash = {
     enable = true;
     shellAliases = {
       btw = "echo i use hyprland btw";
-      nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#hyprland-btw";
+      nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#vm";
       vim = "nvim";
     };
     initExtra = ''

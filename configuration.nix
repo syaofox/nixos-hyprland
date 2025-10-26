@@ -9,12 +9,12 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "hyprland-btw";
+  networking.hostName = "vm";
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/Los_Angeles";
 
-  services.getty.autologinUser = "tony";
+  services.getty.autologinUser = "syaofox";
 
   programs.hyprland = {
     enable = true;
@@ -22,7 +22,7 @@
     withUWSM = true;
   };
 
-  users.users.tony = {
+  users.users.syaofox = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
