@@ -27,6 +27,28 @@ in
     userEmail = "syaofox@gmail.com";
   };
   
+  home.sessionVariables = {
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+    INPUT_METHOD = "fcitx";
+    GLFW_IM_MODULE = "ibus";  # 为某些应用提供兼容性
+  };
+
+  systemd.user.services.fcitx5 = {
+    Unit = {
+      Description = "Fcitx5 input method";
+      PartOf = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.fcitx5}/bin/fcitx5";
+      Restart = "on-failure";
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
+
   programs.bash = {
     enable = true;
     shellAliases = {
@@ -56,6 +78,9 @@ in
     nitch
     rofi
     pcmanfm
+    fcitx5
+    fcitx5-gtk
+    fcitx5-chinese-addons  # 包含拼音输入法
     (pkgs.writeShellApplication {
       name = "ns";
       runtimeInputs = with pkgs; [

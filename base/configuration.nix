@@ -9,17 +9,17 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  services.getty.autologinUser = "syaofox";
+
   networking.hostName = "vm";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Asia/Shanghai";
 
-  services.getty.autologinUser = "syaofox";
-
   programs.hyprland = {
     enable = true;
-    xwayland.enable = true;
     withUWSM = true;
+    xwayland.enable = true;
   };
 
   users.users.syaofox = {
@@ -31,34 +31,15 @@
   };
 
   programs.firefox.enable = true;
-
   environment.systemPackages = with pkgs; [
     vim
     wget
     foot
-    kitty
     waybar
-    git
-    hyprpaper
+    kitty
   ];
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    wqy_microhei  # 文泉驿微米黑
-    wqy_zenhei    # 文泉驿正黑
-  ];
-
-  fonts.fontconfig = {
-    defaultFonts = {
-      serif = [ "WenQuanYi Zen Hei" "DejaVu Serif" ];
-      sansSerif = [ "WenQuanYi Micro Hei" "DejaVu Sans" ];
-      monospace = [ "WenQuanYi Micro Hei Mono" "DejaVu Sans Mono" ];
-    };
-  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   system.stateVersion = "25.05";
 
 }
-
